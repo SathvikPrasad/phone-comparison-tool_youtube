@@ -1,0 +1,146 @@
+body {
+    overflow-x: hidden;
+  font-family: sans-serif;
+  font-weight: 300;
+  margin: 0;
+  word-break: break-word;
+
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  color: #4183c4;
+  font-weight: 300;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+a:hover {
+  color: #3d85c6;
+  text-decoration: underline;
+}
+
+div#container {
+  margin: 0 auto 0 auto;
+  max-width: 720px;
+  padding: 1em 1.5em 1.3em 1.5em;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+h2 {
+  color: #444;
+  font-size: 1em;
+  font-weight: 500;
+  line-height: 1.2em;
+  margin: 0 0 0.8em 0;
+}
+
+h3 {
+  border-top: 1px solid #eee;
+  color: #666;
+  font-size: 0.9em;
+  font-weight: 500;
+  margin: 20px 0 10px 0;
+  padding: 10px 0 0 0;
+  white-space: nowrap;
+}
+
+p#data {
+  border-top: 1px dotted #666;
+  font-family: Courier New, monospace;
+  line-height: 1.3em;
+  max-height: 1000px;
+  overflow-y: auto;
+  padding: 1em 0 0 0;
+}
+
+video {
+  background: #222;
+  margin: 10px auto;
+  width: 640px;
+  height: 360px;
+}
+
+.main_window{
+    margin-top: 20px;
+    overflow: hidden;
+    background-color: white;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+}
+.main_image_section{
+background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 500px;
+}
+
+.image_container{
+    width: 300px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image_container img{
+  object-fit: scale-down;
+    width:320px;
+    height: 350px;
+    padding: 10px;
+}
+.content_window{
+    width: 100%;
+   height: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    position: relative;
+}
+.content_window div{
+    width: 25%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.animation_class{
+    animation: mymove 3s forwards;
+
+}
+
+
+
+.data_form{
+  height: 300px;
+  overflow-y: auto;
+}
+
+
+@keyframes mymove {
+  0% {opacity: 0;}
+  50% {opacity: 1px;}
+  100% {opacity: 0px;}
+}
+
+.selected{
+  background-color: rgb(51, 51, 187);
+  color: white;
+}
+
+.phones_cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

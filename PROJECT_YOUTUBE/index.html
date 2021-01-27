@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#fff">
+    <base target="_blank">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./main.css">
+    <title>Screen Recording With System Sounds Demo</title>
+    <style>
+        a#downloadLink {
+            display: block;
+            margin: 0 0 1em 0;
+            min-height: 1.2em;
+        }
+
+        p#data {
+            min-height: 6em;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div style="text-align:center;">
+
+            <video controls autoplay></video><br>
+            <button id="shareScreen" onclick="onShareScreen()">Share Screen</button>
+            <button id="rec" onclick="onBtnRecordClicked()" disabled>Record</button>
+            <button id="stop" onclick="onBtnStopClicked()" disabled>Stop</button>
+            <button id="stateButton" onclick="onStateClicked()">trace state</button>
+        </div>
+        <a id="downloadLink" download="mediarecorder.webm" name="mediarecorder.webm" href></a>
+        <p id="data" style="display: none;"></p>
+        <div class="d-flex justify-content-center m-5">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+                Select Phones
+            </button>
+        </div>
+        <div class="d-flex  justify-content-center ml-5 mr-5">
+            <button class="btn btn-primary" onclick="start_data()">Start</button>
+
+        </div>
+
+
+    </div>
+    <div id="phones_data" class="d-flex  justify-content-center ml-5 mr-5">
+
+    </div>
+    <!-- Button trigger modal -->
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width: 135%;">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">select two phones</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body phones_cards">
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Button trigger modal -->
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+            Add a New Phone
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Insert New Phone</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="data_form d-flex justify-content-center">
+                        <form class="w-50" id="form_data">
+                            <div class="form-group">
+                                <label for="Name">Name of the Phone</label>
+                                <input type="text" class="form-control" id="Name" name="name" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Image URL</label>
+                                <input type="text" class="form-control" id="image" name="image" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Launch</label>
+                                <input type="text" class="form-control" id="Launch" name="launch" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">weight</label>
+                                <input type="text" class="form-control" id="weight" name="weight" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Build</label>
+                                <input type="text" class="form-control" id="Build" name="build" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Display</label>
+                                <input type="text" class="form-control" id="Display" name="display" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Chipset</label>
+                                <input type="text" class="form-control" id="Chipset" name="chipset" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Memory</label>
+                                <input type="text" class="form-control" id="Memory" name="memory" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Camera</label>
+                                <input type="text" class="form-control" id="Camera" name="cameras" required>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Sound</label>
+                                <input type="text" class="form-control" id="Sound" name="sound">
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Battery</label>
+                                <input type="text" class="form-control" id="Battery" name="battery" required>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                            <div class=" mt-3">
+                                <label for="phone_url">phone URL</label>
+                                <input type="text" class="form-control" id="phone_url" name="phone_url">
+                                <div>
+                                    <button class="btn btn-primary mt-1 w-100" type="button"
+                                        onclick="insert_data()">insert_data</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main_window">
+        <div class="main_image_section">
+
+
+            <div class="image_container"><img id="phone1" src="" alt=""></div>
+            <div class="image_container"><img id="phone2" src="" alt=""></div>
+        </div>
+
+        <div class="content_window ">
+
+        </div>
+
+    </div>
+    <div id="content">
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="./logic.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.0/firebase-functions.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB_jVooYS40eTPj7B_Ccs-SEUdqVzCDEXE",
+            authDomain: "project-c38f7.firebaseapp.com",
+            projectId: "project-c38f7",
+            storageBucket: "project-c38f7.appspot.com",
+            messagingSenderId: "369136255551",
+            appId: "1:369136255551:web:06b502ca851b8ac4d96e8a",
+            measurementId: "G-1HQKND96KG"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+
+        const db = firebase.firestore()
+
+    </script>
+    <script src="./data_base.js"></script>
+</body>
+<script src="./main.js"></script>
+</body>
+
+</html>
