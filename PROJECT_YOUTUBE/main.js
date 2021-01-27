@@ -1,6 +1,6 @@
 "use strict";
 
-var screenConstraints = { video: true, audio: true };
+var screenConstraints = { video: true, audio: false };
 var micConstraints = { audio: true };
 
 // Some UI elements
@@ -78,7 +78,7 @@ function onShareScreen() {
                             } else {
                                 //add just the mic audio
                                 micStream.getAudioTracks().forEach(function (micTrack) {
-                                    composedStream.addTrack(micTrack);
+
                                 });
                             }
 
